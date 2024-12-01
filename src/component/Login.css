@@ -1,0 +1,148 @@
+* {
+  color: #fff;
+}
+
+.input-lable {
+  color: #fff;
+  position: relative;
+  /* left: 125px; */
+  position: relative;
+  /* left: 125px; */
+  top: -24px;
+  z-index: 1;
+  left: 14px;
+  font-size: 20px;
+  transition: 0.3s;
+  pointer-events: none;
+  pointer-events: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.control_form {
+  display: flex;
+  align-items: center;
+  /* align-items: center; */
+  justify-content: center;
+  top: -370px;
+  position: relative;
+  /* height: 100vh; */
+}
+
+.login-container {
+  border-radius: 8px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  /* transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  top: 50%; */
+  background-color: transparent;
+  border: 2px solid white;
+  /* left: 50%; */
+  width: 450px;
+  height: 440px;
+  gap: 30px;
+  box-sizing: border-box;
+  border: solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 8px;
+}
+.login-email {
+  display: flex;
+  left: 8px;
+  border-radius: 5px;
+  padding: 22px 3px;
+  width: 358px;
+  height: 42px;
+  position: relative;
+  border-bottom: 3px solid white;
+  outline: none;
+  background: transparent;
+  margin: -11px 0;
+}
+
+.input-box input:valid ~ .input-lable,
+.input-box input:focus ~ .input-lable {
+  top: -45px;
+  /* background-color: #232424; */
+  border-radius: 3px;
+  color: #fff;
+  font-size: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* animation: shake 1s infinite; */
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+@keyframes shake {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.form-container {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+.rememberme {
+  display: flex;
+  gap: 90px;
+  align-items: center;
+  position: relative;
+  top: 30px;
+}
+#login {
+  font-size: 24px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 358px;
+  /* padding: 0 50px; */
+  background: #fff;
+  color: black;
+  border: solid rgba(240, 239, 239, 0.338);
+  transition: all 0.5s;
+  height: 50px;
+  position: relative;
+  top: 30px;
+}
+#login:hover {
+  background: transparent;
+  color: #fff;
+}
+.register {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+}
+.register > a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .control_form {
+    position: relative;
+    top: -312px;
+  }
+  .login-container {
+    width: 388px;
+  }
+  .koam {
+    z-index: 3;
+  }
+}
+/* .sect-b {
+  background: url(C:\Users\Lenovo\Desktop\BookApp\frontend\src\assets\books\b3.jpg);
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+} */

@@ -1,0 +1,104 @@
+.close {
+  width: 0px;
+  height: 100vh;
+  position: absolute;
+  background-color: rgb(17 24 39);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: end;
+  transition: all 0.5s;
+}
+
+.box-container {
+  background-color: rgb(17 24 39);
+  width: 15%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 30px;
+  align-items: end;
+  /* overflow-y: scroll; */
+  transition: 0.5s;
+  position: absolute;
+}
+.newbtn {
+  width: 157px;
+  /* height: px; */
+  text-align: start;
+  padding-left: 11px;
+  transition: all 0.5s;
+}
+.icons {
+  position: relative;
+  right: 150px;
+  top: 35px;
+  padding: 0 9px;
+  text-decoration: none;
+}
+.newbtn:hover {
+  background-color: rgb(170, 212, 87);
+  border-radius: 5px;
+  transform: scale(0.8);
+}
+.form-contant {
+  display: flex;
+  /* width: 200px; */
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  right: 50%;
+}
+
+.form-contant input {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: black;
+  font-size: 20px;
+}
+.form-contant button {
+  background-color: rgba(133, 231, 35, 0.882);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  height: 30px;
+  width: 80px;
+  transition: 0.5s;
+}
+.form-contant button:hover {
+  background-color: red;
+  transform: scale(0.9);
+}
+.form-contant label {
+  position: absolute;
+  right: 200px;
+  z-index: 1;
+  color: black;
+  transition: 0.5s;
+}
+
+.form-contant input:valid ~ label,
+.form-contant input:focus ~ label {
+  top: 10px;
+  /* position: relative; */
+  color: rgb(224, 228, 232);
+
+  font-size: 10px;
+  transition: 0.5s;
+}
+
+.header-container {
+  /* background-color: #2d3748; */
+  display: flex;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 600px) {
+  .header-container {
+    display: none;
+  }
+}
