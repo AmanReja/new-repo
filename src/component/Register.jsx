@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
+  const base_url = "https://bookapp-3e2d.onrender.com";
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [pass, setPass] = useState("");
@@ -24,10 +25,7 @@ function Register() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(new_user)
     };
-    const response = await fetch(
-      "http://localhost:3000/user/addUser",
-      requestOptions
-    );
+    const response = await fetch(`${base_url}/user/addUser`, requestOptions);
     const data = await response.json();
 
     if (data._id != null) {

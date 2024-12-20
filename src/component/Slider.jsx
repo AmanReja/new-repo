@@ -10,12 +10,13 @@ import "./Slider.css";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function Slider() {
+  const base_url = "https://bookapp-3e2d.onrender.com";
   const [product, setProducts] = useState([]);
 
   // console.log(10, search);
 
   async function getProducts() {
-    const response = await fetch(`http://localhost:3000/seller/getAllBooks`);
+    const response = await fetch(`${base_url}/seller/getAllBooks`);
     const data = await response.json();
     // const items = data.items;
 

@@ -10,6 +10,7 @@ import "./Products.css";
 import { NavLink } from "react-router-dom";
 
 function Products() {
+  const base_url = "https://bookapp-3e2d.onrender.com";
   const value = useContext(cartcontext);
   const [product, setProducts] = useState([]);
 
@@ -25,9 +26,7 @@ function Products() {
   };
 
   async function getProducts() {
-    const response = await fetch(
-      `http://localhost:3000/seller/getAllBooks/${searcher}`
-    );
+    const response = await fetch(`${base_url}/seller/getAllBooks/${searcher}`);
     const data = await response.json();
     // const items = data.items;
 

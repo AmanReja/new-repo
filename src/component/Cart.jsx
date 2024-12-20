@@ -50,7 +50,7 @@ function Cart() {
   const handelremove = (p, index) => {
     if (window.confirm("Do you want to remove this item")) {
       const updatedCart = value.cart.filter((item, i) => {
-        console.log(i, index, item);
+        console.log(i, index);
 
         return i !== index;
       });

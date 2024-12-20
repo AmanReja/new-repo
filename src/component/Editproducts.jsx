@@ -8,14 +8,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Editproducts() {
+  const base_url = "https://bookapp-3e2d.onrender.com";
   // const products = useContext(Productcotext);
   const searcher = useContext(Searchcontext);
 
   const [product, setProducts] = useState([]);
   async function getProducts() {
-    const response = await fetch(
-      `http://localhost:3000/seller/getAllBooks/${searcher}`
-    );
+    const response = await fetch(`${base_url}/seller/getAllBooks/${searcher}`);
     const data = await response.json();
     // const items = data.items;
 
@@ -81,7 +80,7 @@ function Editproducts() {
       };
 
       const response = await fetch(
-        `http://localhost:3000/seller/deleteBook/${item._id}`,
+        `${base_url}/seller/deleteBook/${item._id}`,
         requestOptions
       );
       const data = await response.json();
@@ -119,7 +118,7 @@ function Editproducts() {
       body: JSON.stringify(editedItem)
     };
     const response = await fetch(
-      `http://localhost:3000/seller/updateBook/${editedItem._id}`,
+      `${base_url}/seller/updateBook/${editedItem._id}`,
       requestOptions
     );
 
