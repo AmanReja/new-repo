@@ -1,25 +1,69 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Dashboard from "./Dashboard";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Mnorder() {
-  const [bookid, setBookid] = useState("");
+  // const [bookid, setBookid] = useState("");
   const [bookname, setBookname] = useState("");
   const [bookprice, setBookprice] = useState("");
   const [bookquantity, setBookquantity] = useState("");
+  const [bookrating, setBookrating] = useState("");
+  const [bookoffer, setBoooffer] = useState("");
   const [bookauthore, setBookauthore] = useState("");
   const [bookimage, setBookimage] = useState("");
+  const [bookimageid, setBookimageid] = useState("");
+
+  console.log(bookrating);
+
+  const handleImageUpload = async (e) => {
+    console.log(16, "hiii");
+    const file = e.target.files[0];
+    // if (!file) {
+    //   console.error("No file selected");
+    //   return;
+    // }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "l838hc61"); // Replace 'your_upload_preset' with your actual upload preset
+
+    try {
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/djpw8rdeu/image/upload",
+        formData
+      );
+
+      console.log("response: ", res.data);
+      const x = res.data.secure_url;
+      const y = res.data.public_id;
+
+      console.log(x, y);
+
+      setBookimage(x);
+      setBookimageid(y);
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+    }
+  };
+
   const addProduct = async () => {
     const new_product = {
-      bookid: bookid,
       bookname: bookname,
       price: bookprice,
       quantity: bookquantity,
       authore: bookauthore,
-      bookimage: bookimage
+      rating: bookrating,
+      offer: bookoffer,
+      bookimage: bookimage,
+      bookimageid: bookimageid
     };
     console.log(new_product);
+
+    //Preset:  l838hc61
+    //App name : djpw8rdeu
 
     const requestOptions = {
       method: "POST",
@@ -32,6 +76,8 @@ function Mnorder() {
     );
     const data = await response.json();
 
+    console.log(12, data);
+
     if (data._id != null) {
       toast("You new product has added", {
         theme: "dark"
@@ -43,7 +89,8 @@ function Mnorder() {
 
   return (
     <>
-      <div className="bg-gray-900">
+      <Dashboard></Dashboard>
+      <div className="bg-gray-900 h-[100vh]">
         <div>
           <ToastContainer />
 
@@ -61,25 +108,6 @@ function Mnorder() {
               }}
             >
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Book id
-                  </label>
-                  <input
-                    onChange={(e) => {
-                      setBookid(e.target.value);
-                    }}
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder="Type Book id"
-                    required
-                  />
-                </div>
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="name"
@@ -142,17 +170,22 @@ function Mnorder() {
                     htmlFor="category"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Category
+                    Rating
                   </label>
                   <select
+                    onChange={(e) => {
+                      setBookrating(e.target.value);
+                    }}
                     id="category"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   >
-                    <option selected>Select category</option>
-                    <option value="TV">TV/Monitors</option>
-                    <option value="PC">PC</option>
-                    <option value="GA">Gaming/Console</option>
-                    <option value="PH">Phones</option>
+                    <option selected>Select rating</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.5">3.5</option>
+
+                    <option value="4.5">4.5</option>
+                    <option value="4.8">4.8</option>
+                    <option value="5">5</option>
                   </select>
                 </div>
                 <div>
@@ -174,7 +207,25 @@ function Mnorder() {
                     required
                   />
                 </div>
-
+                <div className="w-full">
+                  <label
+                    htmlFor="brand"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Book offer
+                  </label>
+                  <input
+                    onChange={(e) => {
+                      setBoooffer(e.target.value);
+                    }}
+                    type="number"
+                    name="brand"
+                    id="brand"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="$2999"
+                    required
+                  />
+                </div>
                 <div className="relative right-5 max-w-lg mx-auto">
                   <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -184,7 +235,7 @@ function Mnorder() {
                   </label>
                   <input
                     onChange={(e) => {
-                      setBookimage(e.target.files[0]);
+                      handleImageUpload(e);
                     }}
                     className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     aria-describedby="user_avatar_help"

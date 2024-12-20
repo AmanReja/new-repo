@@ -1,58 +1,97 @@
-import React, { useState } from "react";
-import glass from "../assets/images/glass.png";
-import image from "../assets/images/image.png";
-import b1 from "../assets/books/b1.jpg";
-import b2 from "../assets/books/b2.jpg";
-import b3 from "../assets/books/b3.jpg";
-import b4 from "../assets/books/b4.jpg";
-import b5 from "../assets/books/b5.jpg";
-import b6 from "../assets/books/b6.jpg";
-import b7 from "../assets/books/b7.jpg";
-import b8 from "../assets/books/b8.jpg";
-import b9 from "../assets/books/b9.jpg";
+import React, { useState, useEffect } from "react";
+
+import b1 from "../assets/images/1.jpg";
+import b2 from "../assets/images/2.jpeg";
+import b3 from "../assets/images/3.jpeg";
+import b4 from "../assets/images/4.jpg";
+import b5 from "../assets/images/5.jpeg";
+
 import "./Slider.css";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function Slider() {
+  const [product, setProducts] = useState([]);
+
+  // console.log(10, search);
+
+  async function getProducts() {
+    const response = await fetch(`http://localhost:3000/seller/getAllBooks`);
+    const data = await response.json();
+    // const items = data.items;
+
+    setProducts(data);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const prevSlide = () => {
     if (currentIndex == 0) {
-      setCurrentIndex(slides.length - 1);
+      setCurrentIndex(product.length - 1);
     } else {
       setCurrentIndex(currentIndex - 1);
     }
   };
   const nextSlide = () => {
-    if (currentIndex == slides.length - 1) {
+    if (currentIndex == product.length - 1) {
       setCurrentIndex(0);
     } else {
       setCurrentIndex(currentIndex + 1);
     }
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide(); // Automatically move to next slide every 3 seconds
+    }, 3000); // 3000 ms = 3 seconds
 
-  const slides = [
-    { url: glass },
-    { url: b2 },
-    { url: b3 },
-    { url: b6 },
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(interval);
+  }, [currentIndex]); // Re-run the effect whenever currentIndex changes
 
-    { url: b9 }
-  ];
+  // const slides = [
+  //   { url: b1 },
+  //   { url: b2 },
+  //   { url: b3 },
+  //   { url: b4 },
 
-  console.log(33, slides[currentIndex]?.url);
+  //   { url: b5 }
+  // ];
+
+  // console.log(33, slides[currentIndex]?.url);
 
   return (
     <>
-      <div className="aman max w-[1400]px h-[700px] w-full m-auto py-20 px-20 absolute">
+      <div className="aman max w-[1400]px h-[700px] w-full m-auto py-20 px-20 absolute z-10">
         <div
-          style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-          className="box w-full h-full rounded-2xl bg-center bg-cover duration-700 "
+          style={{
+            backgroundImage: `url(${product[currentIndex]?.bookimage})`
+          }}
+          className="box w-full h-full rounded-2xl bg-center bg-cover duration-[0.2s] "
         ></div>
-        <div className=" nav-l absolute top-[50%] -translate-x-0 translate-x[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer">
+        <div className=" nav-l absolute top-[50%] -translate-x-0 translate-x[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer hover:bg-lime-400 ">
           <BsChevronCompactLeft onClick={prevSlide} size={40} />
         </div>
-        <div className="nav-l absolute top-[50%] -translate-x-0 translate-x[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer">
+        <div className="nav-l absolute top-[50%] -translate-x-0 translate-x[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer hover:bg-lime-400">
           <BsChevronCompactRight onClick={nextSlide} size={40} />
+        </div>
+        <div className="absolute gap-4 top-[88%] right-[700px] flex justify-center py-2">
+          {product.map((slid, Index) => {
+            return (
+              <div
+                onClick={() => {
+                  setCurrentIndex(Index);
+                }}
+                className={` rounded-full w-2 h-2 ${
+                  Index == currentIndex
+                    ? "bg-lime-500 w-4 transition-all duration-[0.5s]"
+                    : "bg-white transition-all duration-[0.5s]"
+                }`}
+                key={Index}
+              ></div>
+            );
+          })}
         </div>
       </div>
     </>

@@ -6,6 +6,10 @@ import Products from "./component/Products.jsx";
 import Home from "./component/Home.jsx";
 import Login from "./component/Login";
 import Mnorder from "./component/Mnorder.jsx";
+import Editproducts from "./component/Editproducts.jsx";
+import Signinadmin from "./component/Signinadmin.jsx";
+import Loginadmin from "./component/Loginadmin.jsx";
+import Cart from "./component/Cart.jsx";
 
 import {
   createBrowserRouter,
@@ -22,6 +26,10 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/order" element={<Mnorder />} />
+      <Route path="/edit" element={<Editproducts />} />
+      <Route path="/adminsignin" element={<Signinadmin />} />
+      <Route path="/adminlogin" element={<Loginadmin />} />
+      <Route path="/Cart" element={<Cart />} />
     </Route>
   )
 );

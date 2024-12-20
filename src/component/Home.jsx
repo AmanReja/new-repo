@@ -6,13 +6,13 @@ import Herobanner from "./Herobanner";
 import Slider from "./Slider";
 import Dashboard from "./Dashboard";
 
-function Home({ search, setSearch }) {
+function Home() {
   return (
     <>
       <Slider></Slider>
 
       <Herobanner></Herobanner>
-      <Products search={search} setSearch={setSearch}></Products>
+      <Products></Products>
     </>
   );
 }

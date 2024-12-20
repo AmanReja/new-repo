@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/12.png";
+
+import cartcontext from "./Context/cartcontext";
+
 import Loginbtn from "./Loginbtn";
 
-function Navbar({ search, setSearch, hand }) {
+function Navbar({ hand }) {
+  const value = useContext(cartcontext);
+
   const user_menu = document.querySelector("#user-menu-button");
   const menu_buttons = document.querySelector("#menu-buttons");
 
   const [open, setOpen] = useState(true);
   const [openinp, setOpeninp] = useState(true);
-  // const [inp, setInp] = useState("Team");
-
-  // console.log(inp);
 
   function show() {
     if (open) {
@@ -46,6 +47,10 @@ function Navbar({ search, setSearch, hand }) {
   // },[setDisplay])
 
   // const first = useRef()
+  // useEffect(() => {
+  //   cartitem;
+  //   console.log(50, cartitem.current.length);
+  // }, [cartitem.current]);
 
   return (
     <>
@@ -112,7 +117,7 @@ function Navbar({ search, setSearch, hand }) {
                 <h3 className="logo text-3xl">MY LOGO </h3>
               </div>
               <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
+                <div className=" relative top-[10px] flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
 
                   <Link>
@@ -142,13 +147,18 @@ function Navbar({ search, setSearch, hand }) {
                       Contact us
                     </a>
                   </Link>
-                  <Link>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                  <Link to="/cart">
+                    <i class=" text-2xl fa-solid fa-cart-shopping"></i>
+
+                    <h3
+                      className={
+                        value.cart.length > 0
+                          ? " relative top-[-40px] left-[20px] w-[20px] text-center h-[20px] rounded bg-red-500"
+                          : "hidden"
+                      }
                     >
-                      About Us
-                    </a>
+                      {value.cart.length}
+                    </h3>
                   </Link>
                 </div>
               </div>

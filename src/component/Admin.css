@@ -1,0 +1,15 @@
+@media only screen and (max-width: 600px) {
+  .adminlogo {
+    width: 100%;
+    left: 0;
+    height: 300px;
+  }
+  .admin-box {
+    position: relative;
+
+    left: 0;
+    height: 113vh;
+    top: 165px;
+    width: 100%;
+  }
+}

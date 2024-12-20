@@ -139,6 +139,10 @@
   .koam {
     z-index: 3;
   }
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 /* .sect-b {
   background: url(C:\Users\Lenovo\Desktop\BookApp\frontend\src\assets\books\b3.jpg);

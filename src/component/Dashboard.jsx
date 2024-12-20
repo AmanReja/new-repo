@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./dashboard.css";
 import { Link } from "react-router-dom";
 
-function Dashboard({ open, setOpen }) {
-  // const [open, setOpen] = useState(true);
+function Dashboard() {
+  const [open, setOpen] = useState(true);
 
   const openbar = () => {
     open ? setOpen(false) : setOpen(true);
@@ -27,7 +27,13 @@ function Dashboard({ open, setOpen }) {
           <button type="submit">Search</button>
         </form>
       </div>
-      <div className={open ? "close" : "z-10 box-container"}>
+      <div
+        className={
+          open
+            ? "close"
+            : "shadow-lg rounded-r-3xl z-20 duration-500 box-container"
+        }
+      >
         <a className="icons" href="#">
           <i class="fa-solid fa-house"></i>
         </a>{" "}
@@ -43,7 +49,7 @@ function Dashboard({ open, setOpen }) {
         </a>
         <label htmlFor="">
           {" "}
-          <Link to="login">
+          <Link to="/login">
             {" "}
             <button className="newbtn">Profile</button>{" "}
           </Link>
@@ -77,9 +83,36 @@ function Dashboard({ open, setOpen }) {
         </a>
         <label htmlFor="">
           {" "}
-          <Link to="order">
+          <Link to="/order">
             {" "}
-            <button className="newbtn">Manage orders</button>
+            <button
+              onClick={() => {
+                setOpen(true);
+              }}
+              className="newbtn"
+            >
+              Manage orders
+            </button>
+          </Link>
+        </label>
+        <a className={"icons"} href="#">
+          <Link to="/order">
+            {" "}
+            <i class="fa-solid fa-pen-to-square"></i>{" "}
+          </Link>
+        </a>
+        <label htmlFor="">
+          {" "}
+          <Link to="/edit">
+            {" "}
+            <button
+              onClick={() => {
+                setOpen(true);
+              }}
+              className="newbtn"
+            >
+              Edit orders
+            </button>
           </Link>
         </label>
       </div>

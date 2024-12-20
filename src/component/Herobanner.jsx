@@ -6,7 +6,7 @@ import { Fade, Slide } from "react-awesome-reveal";
 function Herobanner() {
   return (
     <>
-      <section class="bg-gray-900 text-white">
+      <section class="bg-gray-900 text-white relative">
         <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
           <div class=" z-10 mx-auto max-w-3xl text-center">
             <h1 class="z-10 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text- text-left">
