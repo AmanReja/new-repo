@@ -37,3 +37,15 @@ html {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: rgb(17 24 39);
 }
+@media only screen and (max-width: 600px) {
+  .blackf {
+    width: 50%;
+    left: -159px;
+    position: relative;
+  }
+  .p-add-btn {
+    display: ruby;
+    position: relative;
+    top: -12px;
+  }
+}

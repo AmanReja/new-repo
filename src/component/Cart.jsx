@@ -65,11 +65,11 @@ function Cart() {
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className="  min-h-[1000px] bg-gray-900">
+      <div className=" cart-box min-h-[1000px] bg-gray-900">
         <div
           className={
             value.cart.length > 0
-              ? "bg-gray-800  h-max w-[700px] rounded-md p-4 shadow-[0_3px_20px_-10px_rgba(6,81,237,0.4)] z-10 absolute top-[100px] left-[700px]"
+              ? "cart-b1 bg-gray-800 h-max w-[700px] rounded-md p-4 shadow-[0_3px_20px_-10px_rgba(6,81,237,0.4)] z-10 absolute top-[100px] left-[700px]"
               : "hidden"
           }
         >
@@ -102,7 +102,7 @@ function Cart() {
             />
           </div>
           <br />
-          <div className="flex justify-between">
+          <div className="exp-container flex justify-between">
             <div>
               <label className="block text-base font-semibold text-white mb-2">
                 Expiry Date
@@ -110,7 +110,7 @@ function Cart() {
               <input
                 type="number"
                 placeholder="08/27"
-                className="px-4 py-3 placeholder-white bg-transparent text-white w-[300px] text-sm border border-gray-300 rounded-md focus:border-purple-500 outline-none"
+                className="px-4 py-3 placeholder-white bg-transparent text-white w-[200px] text-sm border border-gray-300 rounded-md focus:border-purple-500 outline-none"
               />
             </div>
             <div>
@@ -181,7 +181,7 @@ function Cart() {
         <div
           className={
             value.cart.length > 0
-              ? " bg-gray-900 rounded w-[700px] items-center	 h-[60px] border-spacing-2 flex gap-[200px]"
+              ? " cart-head bg-gray-900 rounded w-[700px] items-center	 h-[60px] border-spacing-2 flex gap-[200px]"
               : "hidden"
           }
         >
@@ -204,7 +204,7 @@ function Cart() {
                 <div className="card card-stepper" style={{ borderRadius: 16 }}>
                   <div className=" bg-lime-400 card-header p-4">
                     <button
-                      className="w-[80px] hover:bg-red-600 left-[310px] rounded-2xl relative duration-300"
+                      className="w-[80px] hover:bg-red-600 left-[200px] rounded-2xl relative duration-300"
                       onClick={() => {
                         setDetails(false);
                       }}
@@ -287,14 +287,14 @@ function Cart() {
         {value.cart.map((p, index) => (
           <div key={index} className="  relative w-[710px] bg-gray-900">
             <div className=" fixed  transition-opacity " />
-            <div className=" mt-8">
-              <div className="  relative left-[80px] flow bg-gray-900">
-                <li className="flex py-6 w-[700px]">
-                  <div className="w-[200px] h-[132px] shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <div className=" mt-8 ">
+              <div className=" box-cart-1  relative left-[80px] flow bg-gray-900">
+                <li className=" box-cart flex py-6 w-[700px]">
+                  <div className=" box-car-img w-[200px] h-[132px] shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
                       src={p.bookimage}
                       alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
-                      className="w-[200px] h-[132px] object-cover"
+                      className=" w-full h-full object-cover"
                     />
                   </div>
                   <div className="ml-4 flex flex-1 flex-col">
@@ -354,8 +354,8 @@ function Cart() {
                         </button>
                       </div>
                     </div>
-                    <div className="flex flex-1 items-end justify-between text-sm">
-                      <div className="flex gap-2">
+                    <div className=" flex items-end justify-between text-sm">
+                      <div className="cart-box-btn flex gap-2">
                         <button
                           onClick={() => {
                             handelremove(p, index);

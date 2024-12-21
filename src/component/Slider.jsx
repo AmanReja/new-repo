@@ -64,7 +64,7 @@ function Slider() {
 
   return (
     <>
-      <div className="aman max w-[1400]px h-[700px] w-full m-auto py-20 px-20 absolute z-10">
+      <div className="aman max w-[1400]px top-[30px] h-[700px] w-full m-auto py-20 px-20 absolute z-1">
         <div
           style={{
             backgroundImage: `url(${product[currentIndex]?.bookimage})`
@@ -77,14 +77,14 @@ function Slider() {
         <div className="nav-l absolute top-[50%] -translate-x-0 translate-x[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer hover:bg-lime-400">
           <BsChevronCompactRight onClick={nextSlide} size={40} />
         </div>
-        <div className="absolute gap-4 top-[88%] right-[700px] flex justify-center py-2">
+        <div className=" dot-box absolute gap-4 top-[78%] right-[700px] flex justify-center py-2">
           {product.map((slid, Index) => {
             return (
               <div
                 onClick={() => {
                   setCurrentIndex(Index);
                 }}
-                className={` rounded-full w-2 h-2 ${
+                className={`rounded-full w-2 h-2 ${
                   Index == currentIndex
                     ? "bg-lime-500 w-4 transition-all duration-[0.5s]"
                     : "bg-white transition-all duration-[0.5s]"

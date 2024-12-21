@@ -146,7 +146,7 @@ function Products() {
                 </button>
               </div>
 
-              <div className="relative  flex justify-between gap-4 w-[400px]">
+              <div className="p-add-btn relative  flex justify-between gap-4 w-[400px]">
                 <NavLink to="/cart">
                   <button
                     onClick={() => {

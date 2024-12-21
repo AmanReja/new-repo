@@ -54,7 +54,7 @@
     height: 50px;
   }
   .show-icon {
-    left: 340px;
+    left: 299px;
     position: absolute;
     font-size: 30px;
     /* margin-top: 12px; */
@@ -73,7 +73,7 @@
     right: 100px;
     position: relative;
   } */
-  .log-btn{
+  .log-btn {
     display: none;
   }
 }
